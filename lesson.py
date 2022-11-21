@@ -12,3 +12,6 @@ name = "1"
 
 new_num = int(name)
 print(new_num, type(new_num))
+
+print("Hi", "Mike", sep=",", end=".\n")
+print("Hi", "Mike", sep=",", end=".\n")
