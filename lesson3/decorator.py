@@ -1,3 +1,5 @@
+# デコレータはすでにある関数に処理の追加や変更を行う
+
 def print_more(func):
   def wrapper(*args, **kwargs):
     print('func:', func.__name__)
