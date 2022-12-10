@@ -10,6 +10,6 @@ with zipfile.ZipFile('test.zip', 'w') as z:
 
 with zipfile.ZipFile('test.zip', 'r') as z:
   # z.extractall('zzz2')
-  with z.pen('test_dir/test.txt') as f:
+  with z.open('test_dir/test.txt') as f:
     print(f.read())
     
