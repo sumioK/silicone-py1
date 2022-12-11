@@ -1,4 +1,6 @@
-restaurants = []
+import csv
+
+restaurants = {}
 
 # 挨拶、名前を聞く
 print('=========================================================')
@@ -15,3 +17,14 @@ restaurants.append(r)
 print(restaurants)
 
 # レストランの名前と回数をcsvファイルへ出力する
+with open('roboter.csv', 'w', newline='', encoding='utf-8') as csv_file:
+  fieldnames = ['Restaurant', 'Count']
+  writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+  writer.writeheader()
+  writer.writerow({'Restaurant': r, 'Count': 1})
+  
+
+with open('roboter.csv', 'r') as csv_file:
+  reader = csv.DictReader(csv_file)
+  for row in reader:
+    restaurants.append({row['Restaurant']: row['Count']})
