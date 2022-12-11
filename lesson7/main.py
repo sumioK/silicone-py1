@@ -1,4 +1,5 @@
 import csv
+import os
 
 # 挨拶、名前を聞く
 print('=========================================================')
@@ -15,12 +16,22 @@ r = input('入力:')
 # csvファイルを開き、中のデータを辞書restaurantsに代入
 restaurants = {}
 
+# roboter.csvが存在しない場合新たにファイルを作成する
+if os.path.isfile('roboter.csv'):
+  pass
+else:
+  with open('roboter.csv', 'w') as csv_file:
+    fieldnames = ['Restaurant', 'Count']
+    writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+    writer.writeheader()
+
+# roboter.csvを開く
 with open('roboter.csv', 'r+') as csv_file:
   reader = csv.DictReader(csv_file)
   for row in reader:
     restaurants.append({row['Restaurant']: row['Count']})
 # もし既に存在しているレストランだったらCountを+1する
-  if restaurants[r]:
+  if r in restaurants:
     row['Count'] += 1
 # 存在していない場合、Countが１の状態で新しく作成する
   else:
@@ -28,4 +39,7 @@ with open('roboter.csv', 'r+') as csv_file:
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
     writer.writeheader()
     writer.writerow({'Restaurant': r, 'Count': 1})
+
+  for row in reader:
+    print(row['Restaurant'], row['Count'])
 
