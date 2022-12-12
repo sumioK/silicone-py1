@@ -33,16 +33,17 @@ with open('roboter.csv', 'r+') as csv_file:
 
   #csvファイルの中身を辞書restaurantsに入れる 
   for row in reader:
-    # restaurants.append({row['Restaurant']: row['Count']})
     restaurants[row['Restaurant']] = row['Count']
+
 # もし既に存在しているレストランだったらCountを+1する
   if r in restaurants:
-    row['Count'] += 1
+    restaurants[r] = int(restaurants[r]) + 1
+    print(restaurants)
+
 # 存在していない場合、Countが１の状態で新しく作成する
   else:
     fieldnames = ['Restaurant', 'Count']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-    writer.writeheader()
     writer.writerow({'Restaurant': r, 'Count': 1})
 
 # 終了
