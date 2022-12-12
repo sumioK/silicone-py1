@@ -8,7 +8,9 @@ print('=========================================================')
 name = input('名前:')
 
 # 名前を変数に代入し、好きなレストランを聞く
+print('=========================================================')
 print(f'{name}さん。どこのレストランが好きですか?')
+print('=========================================================')
 
 # レストランの名前を変数rに保存する
 r = input('入力:')
@@ -28,8 +30,11 @@ else:
 # roboter.csvを開く
 with open('roboter.csv', 'r+') as csv_file:
   reader = csv.DictReader(csv_file)
+
+  #csvファイルの中身を辞書restaurantsに入れる 
   for row in reader:
-    restaurants.append({row['Restaurant']: row['Count']})
+    # restaurants.append({row['Restaurant']: row['Count']})
+    restaurants[row['Restaurant']] = row['Count']
 # もし既に存在しているレストランだったらCountを+1する
   if r in restaurants:
     row['Count'] += 1
@@ -40,6 +45,9 @@ with open('roboter.csv', 'r+') as csv_file:
     writer.writeheader()
     writer.writerow({'Restaurant': r, 'Count': 1})
 
-  for row in reader:
-    print(row['Restaurant'], row['Count'])
+# 終了
+print('=========================================================')
+print(f'{name}さん、ご協力ありがとうございました。')
+print('=========================================================')
+
 
