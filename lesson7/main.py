@@ -40,7 +40,15 @@ with open('roboter.csv', 'r+') as csv_file:
     restaurants[r] = int(restaurants[r]) + 1
     print(restaurants)
 
-# 存在していない場合、Countが１の状態で新しく作成する
+# csvファイルに出力する
+    # csv_file.truncate(0)
+    # fieldnames = ['Restaurant', 'Count']
+    # writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+    # writer.writeheader()
+    # for k, v in restaurants.items():
+    #   writer.writerow([k, v])
+
+  # 存在していない場合、Countが１の状態で新しく作成する
   else:
     fieldnames = ['Restaurant', 'Count']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
