@@ -10,7 +10,7 @@ class Robot(object):
     """Base model for Robot."""
 
     def __init__(self, name=DEFAULT_ROBOT_NAME, user_name='',
-                 speak_color='green'):
+                speak_color='green'):
         self.name = name
         self.user_name = user_name
         self.speak_color = speak_color
